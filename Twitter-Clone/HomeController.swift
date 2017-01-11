@@ -51,7 +51,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let headerID = "headerID"
     let footerID = "footerID"
     
-    let dataForCells = ["Hello", "my", "name", "is","Mario","Hernandez"]
+    let dataForCells = ["Hello", "my", "name", "is","Mario","Hernandez", "Vasquez", "Jr"]
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.green
@@ -68,8 +68,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let curCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let curCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! wordCell
         
+        curCell.wordLabel.text = dataForCells[indexPath.row]
         
         return curCell
         
@@ -92,6 +93,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             footer.backgroundColor = .red
             return footer
         }
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
     
     
